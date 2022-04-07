@@ -64,7 +64,7 @@ fun AccountPageBody(navController: NavHostController){
         }
         Text("Ваш рейтинг — 5 звезд. Любой исполнитель может довериться вам!", color = Color.LightGray,
             textAlign = TextAlign.Center, modifier = Modifier.padding(5.dp))
-        Text("Добрые дела:", modifier = Modifier.padding(5.dp),
+        Text("Добрые дела:", modifier = Modifier.padding(PaddingValues(horizontal = 20.dp)).fillMaxWidth(),
             fontWeight = FontWeight.Bold, fontSize = 30.sp)
         Column(
             modifier = Modifier
