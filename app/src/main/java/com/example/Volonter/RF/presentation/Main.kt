@@ -126,7 +126,7 @@ fun Body(navController: NavHostController){
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text("Ты всегда нужен", modifier = Modifier
+        Text("Ты всегда нужен!", modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth(), fontWeight = FontWeight.Bold, fontSize = 30.sp, textAlign = TextAlign.Left)
         Box(modifier = Modifier
@@ -153,9 +153,10 @@ fun Body(navController: NavHostController){
 }
 @Composable
 fun EventCard(navController: NavHostController){
-    Button(onClick = {
-        navController.navigate("")
-    }){
+    Button(onClick = {navController.navigate("CardPage")},
+        colors = ButtonDefaults.buttonColors(Color.Transparent),
+        elevation = ButtonDefaults.elevation(0.dp)
+    ){
         Card(
             elevation = 0.dp,
             modifier = Modifier

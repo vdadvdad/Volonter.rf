@@ -3,7 +3,9 @@ package com.example.Volonter.RF.presentation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,11 +34,11 @@ fun AccountPage(navController: NavHostController = rememberNavController()){
             BottomBar(navController)
         }
     ) {
-        AccountPageBody()
+        AccountPageBody(navController)
     }
 }
 @Composable
-fun AccountPageBody(){
+fun AccountPageBody(navController: NavHostController){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
@@ -58,6 +61,21 @@ fun AccountPageBody(){
                 modifier = Modifier.padding(5.dp))
             Icon(painter = painterResource(R.drawable.ic_baseline_star_24), contentDescription = "desc",
                 modifier = Modifier.padding(5.dp))
+        }
+        Text("Ваш рейтинг — 5 звезд. Любой исполнитель может довериться вам!", color = Color.LightGray,
+            textAlign = TextAlign.Center, modifier = Modifier.padding(5.dp))
+        Text("Добрые дела:", modifier = Modifier.padding(5.dp),
+            fontWeight = FontWeight.Bold, fontSize = 30.sp)
+        Column(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            for (i in 1..5){
+                EventCard(navController)
+                Spacer(modifier = Modifier.size(10.dp))
+            }
         }
     }
 }
