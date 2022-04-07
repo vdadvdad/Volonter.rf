@@ -42,7 +42,7 @@ fun MainPage(navController: NavHostController = rememberNavController()) {
             BottomBar(navController)
         }
     ) {
-        Body()
+        Body(navController)
     }
 }
 @Composable
@@ -117,7 +117,7 @@ fun BottomBar(navController: NavHostController){
     }
 }
 @Composable
-fun Body(){
+fun Body(navController: NavHostController){
     Column(
 
         modifier = Modifier
@@ -146,38 +146,43 @@ fun Body(){
             FilterButton(R.drawable.ic_baseline_near_me_24, "поблизости")
         }
         for (i in 1..10){
-            EventCard()
+            EventCard(navController)
             Spacer(modifier = Modifier.size(10.dp))
         }
     }
 }
 @Composable
-fun EventCard(){
-    Card(
-        elevation = 0.dp,
-        modifier = Modifier
-            .clip(RoundedCornerShape(10))
-            .height(200.dp)
-            .width(300.dp)
-            .padding(0.dp),
-    ){
-        Image(painter = painterResource(id = R.drawable.regnum_picture_16472605334850101_normal), contentDescription = "desc",
+fun EventCard(navController: NavHostController){
+    Button(onClick = {
+        navController.navigate("")
+    }){
+        Card(
+            elevation = 0.dp,
             modifier = Modifier
-                .fillMaxSize())
-        Text("В Саранске нужны волонтеры на открытие больницы", textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .height(40.dp)
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Black,
-                            Color.Transparent,
-                            Color.Transparent
+                .clip(RoundedCornerShape(10))
+                .height(200.dp)
+                .width(300.dp)
+                .padding(0.dp),
+
+            ){
+            Image(painter = painterResource(id = R.drawable.regnum_picture_16472605334850101_normal), contentDescription = "desc",
+                modifier = Modifier
+                    .fillMaxSize())
+            Text("В Саранске нужны волонтеры на открытие больницы", textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .height(40.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Black,
+                                Color.Transparent,
+                                Color.Transparent
+                            )
                         )
-                    )
-                ), color = Color.White,
-            fontWeight = FontWeight.Bold)
+                    ), color = Color.White,
+                fontWeight = FontWeight.Bold)
+        }
     }
 }
 @Composable
@@ -189,6 +194,7 @@ fun FilterButton(image: Int, text: String){
         verticalAlignment = Alignment.CenterVertically){
         Image(painter = painterResource(id = image), contentDescription = "desc")
         Spacer(modifier = Modifier.size(5.dp))
-        Text(text, color = Color.White, fontWeight = FontWeight.Bold)
+        Text(text, color = Color.White, fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(PaddingValues(horizontal = 5.dp)))
     }
 }

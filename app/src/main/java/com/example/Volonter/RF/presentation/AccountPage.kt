@@ -44,5 +44,20 @@ fun AccountPageBody(){
             modifier = Modifier.clip(RoundedCornerShape(100)).size(150.dp))
         Text("Владислав Павловский", fontWeight = FontWeight.Bold, fontSize = 30.sp)
         Text("Волонтер с 7 апреля 2022 года", color = Color.LightGray)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ){
+            Icon(painter = painterResource(R.drawable.ic_baseline_star_24), contentDescription = "desc",
+                modifier = Modifier.padding(5.dp))
+            Icon(painter = painterResource(R.drawable.ic_baseline_star_24), contentDescription = "desc",
+                modifier = Modifier.padding(5.dp))
+            Icon(painter = painterResource(R.drawable.ic_baseline_star_24), contentDescription = "desc",
+                modifier = Modifier.padding(5.dp))
+            Icon(painter = painterResource(R.drawable.ic_baseline_star_24), contentDescription = "desc",
+                modifier = Modifier.padding(5.dp))
+            Icon(painter = painterResource(R.drawable.ic_baseline_star_24), contentDescription = "desc",
+                modifier = Modifier.padding(5.dp))
+        }
     }
 }

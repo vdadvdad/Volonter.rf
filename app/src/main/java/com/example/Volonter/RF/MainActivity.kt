@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.Volonter.RF.presentation.AccountPage
+import com.example.Volonter.RF.presentation.CardPage
 import com.example.Volonter.RF.presentation.MainPage
 import com.example.Volonter.RF.ui.theme.VolonterRFTheme
 
@@ -38,6 +39,9 @@ fun Operator(){
         }
         composable("MainPage") {
             MainPage(navController)
+        }
+        composable("CardPage") {
+            CardPage(navController)
         }
     }
 }
