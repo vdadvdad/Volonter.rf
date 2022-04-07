@@ -12,9 +12,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.Volonter.RF.presentation.AccountPage
+import com.example.Volonter.RF.presentation.AuthPage
 import com.example.Volonter.RF.presentation.CardPage
 import com.example.Volonter.RF.presentation.MainPage
 import com.example.Volonter.RF.ui.theme.VolonterRFTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Operator(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "MainPage") {
+    NavHost(navController = navController, startDestination = "AuthPage") {
         composable("AccountPage") {
             AccountPage()
         }
@@ -42,6 +45,9 @@ fun Operator(){
         }
         composable("CardPage") {
             CardPage(navController)
+        }
+        composable("AuthPage"){
+            AuthPage(navController)
         }
     }
 }
